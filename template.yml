@@ -1,0 +1,582 @@
+Outputs:
+  SiteUrl:
+    Value: https://infinidrive.infinityworks.academy
+  ApiUrl:
+    Value:
+      Fn::Join:
+        - ""
+        - - https://
+          - Ref: InfinidriveApi9595F080
+          - .execute-api.eu-west-1.
+          - Ref: AWS::URLSuffix
+          - /
+Resources:
+  InfinidriveBucket1727DDD4:
+    Type: AWS::S3::Bucket
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveBucket/Resource
+  InfinidriveBucketPolicy5903EA8F:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: InfinidriveBucket1727DDD4
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetBucket*
+              - s3:List*
+              - s3:DeleteObject*
+            Effect: Allow
+            Principal:
+              AWS:
+                Fn::GetAtt:
+                  - CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092
+                  - Arn
+            Resource:
+              - Fn::GetAtt:
+                  - InfinidriveBucket1727DDD4
+                  - Arn
+              - Fn::Join:
+                  - ""
+                  - - Fn::GetAtt:
+                        - InfinidriveBucket1727DDD4
+                        - Arn
+                    - /*
+          - Action: s3:GetObject
+            Effect: Allow
+            Principal:
+              CanonicalUser:
+                Fn::GetAtt:
+                  - DistributionOrigin1S3Origin5F5C0696
+                  - S3CanonicalUserId
+            Resource:
+              Fn::Join:
+                - ""
+                - - Fn::GetAtt:
+                      - InfinidriveBucket1727DDD4
+                      - Arn
+                  - /*
+        Version: "2012-10-17"
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveBucket/Policy/Resource
+  InfinidriveBucketAutoDeleteObjectsCustomResource55F1879D:
+    Type: Custom::S3AutoDeleteObjects
+    Properties:
+      ServiceToken:
+        Fn::GetAtt:
+          - CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F
+          - Arn
+      BucketName:
+        Ref: InfinidriveBucket1727DDD4
+    DependsOn:
+      - InfinidriveBucketPolicy5903EA8F
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveBucket/AutoDeleteObjectsCustomResource/Default
+  CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+      ManagedPolicyArns:
+        - Fn::Sub: arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      PermissionsBoundary: arn:aws:iam::745580839125:policy/ScopePermissions
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role
+  CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParameters4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392S3BucketBF7A7F3F
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameters4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392S3VersionKeyFAF93626
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameters4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392S3VersionKeyFAF93626
+      Timeout: 900
+      MemorySize: 128
+      Handler: __entrypoint__.handler
+      Role:
+        Fn::GetAtt:
+          - CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092
+          - Arn
+      Runtime: nodejs12.x
+      Description:
+        Fn::Join:
+          - ""
+          - - "Lambda function for auto-deleting objects in "
+            - Ref: InfinidriveBucket1727DDD4
+            - " S3 bucket."
+    DependsOn:
+      - CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler
+  InfinidriveApi9595F080:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      CorsConfiguration:
+        AllowMethods:
+          - GET
+          - PUT
+          - OPTIONS
+          - POST
+        AllowOrigins:
+          - https://infinidrive.infinityworks.academy
+      Name: InfinidriveApi
+      ProtocolType: HTTP
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveApi/Resource
+  InfinidriveApiDefaultStageD1EBB258:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId:
+        Ref: InfinidriveApi9595F080
+      StageName: $default
+      AutoDeploy: true
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveApi/DefaultStage/Resource
+  InfinidriveApiGETvehiclesInfinidriveStackInfinidriveApiGETvehicles35F0858DPermission0CD6867B:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName:
+        Fn::GetAtt:
+          - GetVehicles5B3BCFFD
+          - Arn
+      Principal: apigateway.amazonaws.com
+      SourceArn:
+        Fn::Join:
+          - ""
+          - - "arn:"
+            - Ref: AWS::Partition
+            - ":execute-api:eu-west-1:745580839125:"
+            - Ref: InfinidriveApi9595F080
+            - /*/*/vehicles
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveApi/GET--vehicles/InfinidriveStackInfinidriveApiGETvehicles35F0858D-Permission
+  InfinidriveApiGETvehiclesHttpIntegrationcf69c827d86270f1bced60106589745e38C023CF:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId:
+        Ref: InfinidriveApi9595F080
+      IntegrationType: AWS_PROXY
+      IntegrationUri:
+        Fn::GetAtt:
+          - GetVehicles5B3BCFFD
+          - Arn
+      PayloadFormatVersion: "2.0"
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveApi/GET--vehicles/HttpIntegration-cf69c827d86270f1bced60106589745e/Resource
+  InfinidriveApiGETvehicles625F192E:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId:
+        Ref: InfinidriveApi9595F080
+      RouteKey: GET /vehicles
+      AuthorizationType: NONE
+      Target:
+        Fn::Join:
+          - ""
+          - - integrations/
+            - Ref: InfinidriveApiGETvehiclesHttpIntegrationcf69c827d86270f1bced60106589745e38C023CF
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveApi/GET--vehicles/Resource
+  UrlRewriteFunction9ABF1F87:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: UrlRewriteFunction
+      AutoPublish: true
+      FunctionCode:
+        Fn::Join:
+          - ""
+          - - |-
+              function handler(event) {
+                var req = event.request;
+                var uri = req.uri;
+                if (uri.includes("/api")) {
+                    var redirect = "https://
+            - Ref: InfinidriveApi9595F080
+            - .execute-api.eu-west-1.
+            - Ref: AWS::URLSuffix
+            - |-
+              /" + uri.split("/api/")[1]
+                    var response = {
+                      statusCode: 301,
+                      statusDescription: 'Found',
+                      headers: {
+                        'location': { value: redirect },
+                      }
+                    };
+                    return response;
+                }
+                if (uri.endsWith("/") || !uri.includes(".")) req.uri = "/index.html"; // Always redirect to root index.html
+                return req;
+              }
+      FunctionConfig:
+        Comment: Rewrites request from /api/* to API gateway endpoint, otherwise to /index.html
+        Runtime: cloudfront-js-1.0
+    Metadata:
+      aws:cdk:path: InfinidriveStack/UrlRewriteFunction/Resource
+  DistributionOrigin1S3Origin5F5C0696:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: Identity for InfinidriveStackDistributionOrigin130608121
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Distribution/Origin1/S3Origin/Resource
+  Distribution830FAC52:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - infinidrive.infinityworks.academy
+        DefaultCacheBehavior:
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          Compress: true
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN:
+                Fn::GetAtt:
+                  - UrlRewriteFunction9ABF1F87
+                  - FunctionARN
+          TargetOriginId: InfinidriveStackDistributionOrigin130608121
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        Enabled: true
+        HttpVersion: http2
+        IPV6Enabled: true
+        Origins:
+          - DomainName:
+              Fn::GetAtt:
+                - InfinidriveBucket1727DDD4
+                - RegionalDomainName
+            Id: InfinidriveStackDistributionOrigin130608121
+            S3OriginConfig:
+              OriginAccessIdentity:
+                Fn::Join:
+                  - ""
+                  - - origin-access-identity/cloudfront/
+                    - Ref: DistributionOrigin1S3Origin5F5C0696
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:745580839125:certificate/bf59109c-3ecb-4eac-a2a8-b5befef26dc9
+          MinimumProtocolVersion: TLSv1.2_2019
+          SslSupportMethod: sni-only
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Distribution/Resource
+  InfinidriveBucketDeploymentAwsCliLayerF97DBAA1:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      Content:
+        S3Bucket:
+          Ref: AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3BucketAEADE8C7
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3VersionKeyE415415F
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3VersionKeyE415415F
+      Description: /opt/awscli/aws
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveBucketDeployment/AwsCliLayer/Resource
+      aws:asset:path: asset.e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68.zip
+      aws:asset:property: Content
+  InfinidriveBucketDeploymentCustomResource6B1AE28A:
+    Type: Custom::CDKBucketDeployment
+    Properties:
+      ServiceToken:
+        Fn::GetAtt:
+          - CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536
+          - Arn
+      SourceBucketNames:
+        - Ref: AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3BucketD2923BFC
+      SourceObjectKeys:
+        - Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3VersionKeyAD8C6A6B
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3VersionKeyAD8C6A6B
+      DestinationBucketName:
+        Ref: InfinidriveBucket1727DDD4
+      Prune: true
+      DistributionId:
+        Ref: Distribution830FAC52
+      DistributionPaths:
+        - /*
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: InfinidriveStack/InfinidriveBucketDeployment/CustomResource/Default
+  CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      PermissionsBoundary: arn:aws:iam::745580839125:policy/ScopePermissions
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource
+  CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject*
+              - s3:GetBucket*
+              - s3:List*
+            Effect: Allow
+            Resource:
+              - Fn::Join:
+                  - ""
+                  - - "arn:"
+                    - Ref: AWS::Partition
+                    - ":s3:::"
+                    - Ref: AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3BucketD2923BFC
+              - Fn::Join:
+                  - ""
+                  - - "arn:"
+                    - Ref: AWS::Partition
+                    - ":s3:::"
+                    - Ref: AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3BucketD2923BFC
+                    - /*
+          - Action:
+              - s3:GetObject*
+              - s3:GetBucket*
+              - s3:List*
+              - s3:DeleteObject*
+              - s3:PutObject
+              - s3:Abort*
+            Effect: Allow
+            Resource:
+              - Fn::GetAtt:
+                  - InfinidriveBucket1727DDD4
+                  - Arn
+              - Fn::Join:
+                  - ""
+                  - - Fn::GetAtt:
+                        - InfinidriveBucket1727DDD4
+                        - Arn
+                    - /*
+          - Action:
+              - cloudfront:GetInvalidation
+              - cloudfront:CreateInvalidation
+            Effect: Allow
+            Resource: "*"
+        Version: "2012-10-17"
+      PolicyName: CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF
+      Roles:
+        - Ref: CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource
+  CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParametersc24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cfS3Bucket55EFA30C
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParametersc24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cfS3VersionKey60329B70
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParametersc24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cfS3VersionKey60329B70
+      Role:
+        Fn::GetAtt:
+          - CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265
+          - Arn
+      Handler: index.handler
+      Layers:
+        - Ref: InfinidriveBucketDeploymentAwsCliLayerF97DBAA1
+      Runtime: python3.6
+      Timeout: 900
+    DependsOn:
+      - CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF
+      - CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265
+    Metadata:
+      aws:cdk:path: InfinidriveStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource
+      aws:asset:path: asset.c24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cf
+      aws:asset:property: Code
+  VehiclesTable2BED75CE:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      TableName: Vehicles
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: InfinidriveStack/VehiclesTable/Resource
+  GetVehiclesServiceRole8E1D2945:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - Fn::Join:
+            - ""
+            - - "arn:"
+              - Ref: AWS::Partition
+              - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      PermissionsBoundary: arn:aws:iam::745580839125:policy/ScopePermissions
+    Metadata:
+      aws:cdk:path: InfinidriveStack/GetVehicles/ServiceRole/Resource
+  GetVehicles5B3BCFFD:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParameters47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88S3Bucket782D3510
+        S3Key:
+          Fn::Join:
+            - ""
+            - - Fn::Select:
+                  - 0
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameters47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88S3VersionKeyCA48CFE3
+              - Fn::Select:
+                  - 1
+                  - Fn::Split:
+                      - "||"
+                      - Ref: AssetParameters47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88S3VersionKeyCA48CFE3
+      Role:
+        Fn::GetAtt:
+          - GetVehiclesServiceRole8E1D2945
+          - Arn
+      Environment:
+        Variables:
+          DDB_REGION: eu-west-1
+          DDB_TABLE: Vehicles
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
+      Handler: index.handler
+      Runtime: nodejs14.x
+    DependsOn:
+      - GetVehiclesServiceRole8E1D2945
+    Metadata:
+      aws:cdk:path: InfinidriveStack/GetVehicles/Resource
+      aws:asset:path: asset.47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88
+      aws:asset:property: Code
+  SiteCnameRecordCAC21179:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: infinidrive.infinityworks.academy.
+      Type: CNAME
+      HostedZoneId: Z0843386LGHCZ4H7HHXE
+      ResourceRecords:
+        - Fn::GetAtt:
+            - Distribution830FAC52
+            - DomainName
+      TTL: "1800"
+    Metadata:
+      aws:cdk:path: InfinidriveStack/SiteCnameRecord/Resource
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Analytics: v2:deflate64:H4sIAAAAAAAAE3VSXW/bMAz8LX2X1Xnt9rzURbECwxo4w94ViQ2U2JIhUgkMwf99opSPbdieeCRPJ/GoVrbto/xw90WdsNHmcJ+0DyDThpQ+iO7dvUWaIonOO6QQdUYRyY89oI9BA1Nu+I/WOvijNRDEChEoC+6s2zF/rYIagXLnQl0EX5/wQaanqA9ATDujGtZ+sHq+lc95TZ4UssRkd4rgpObjR5m+Ek2ryfIJDpzyE8qDK+BS7yNV9OoIdkGR9Y4pf6WFt4hBjVujZOIhIIwW8dz/pmYIPyGUfJPnHIC8e4lOF4UryNQLXoQefDTvwTuS6V8M8Wyz53YbS/IWbDZwpTUgvhpwZKn40bHKC6v8j/G7zCLwoUkGpsHPY6bI6uDztSAUbwtlWdoirBpl6v1QF83xtomKFmFmp0ZvtjL9UNvKLODiV+O8gT3K7yVcpwvs6ae88i4fhx7yxzP1OzHa5NuvAgPb2+Q/ogcrVyfsBlscXwRLyz3eH9vP8lG2d3u0tgkxzz6C7Gv8BSkH4crkAgAA
+    Metadata:
+      aws:cdk:path: InfinidriveStack/CDKMetadata/Default
+Parameters:
+  AssetParameters4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392S3BucketBF7A7F3F:
+    Type: String
+    Description: S3 bucket for asset "4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392"
+  AssetParameters4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392S3VersionKeyFAF93626:
+    Type: String
+    Description: S3 key for asset version "4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392"
+  AssetParameters4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392ArtifactHashE56CD69A:
+    Type: String
+    Description: Artifact hash for asset "4cd61014b71160e8c66fe167e43710d5ba068b80b134e9bd84508cf9238b2392"
+  AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3BucketAEADE8C7:
+    Type: String
+    Description: S3 bucket for asset "e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68"
+  AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68S3VersionKeyE415415F:
+    Type: String
+    Description: S3 key for asset version "e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68"
+  AssetParameterse9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68ArtifactHashD9A515C3:
+    Type: String
+    Description: Artifact hash for asset "e9882ab123687399f934da0d45effe675ecc8ce13b40cb946f3e1d6141fe8d68"
+  AssetParametersc24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cfS3Bucket55EFA30C:
+    Type: String
+    Description: S3 bucket for asset "c24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cf"
+  AssetParametersc24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cfS3VersionKey60329B70:
+    Type: String
+    Description: S3 key for asset version "c24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cf"
+  AssetParametersc24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cfArtifactHash85F58E48:
+    Type: String
+    Description: Artifact hash for asset "c24b999656e4fe6c609c31bae56a1cf4717a405619c3aa6ba1bc686b8c2c86cf"
+  AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3BucketD2923BFC:
+    Type: String
+    Description: S3 bucket for asset "8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78"
+  AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78S3VersionKeyAD8C6A6B:
+    Type: String
+    Description: S3 key for asset version "8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78"
+  AssetParameters8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78ArtifactHashD0DE8DAA:
+    Type: String
+    Description: Artifact hash for asset "8ad1407f3d6c5cc7df7b3a9d6d3fbe19b0435de2be62f5854e4687fa4d7ddf78"
+  AssetParameters47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88S3Bucket782D3510:
+    Type: String
+    Description: S3 bucket for asset "47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88"
+  AssetParameters47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88S3VersionKeyCA48CFE3:
+    Type: String
+    Description: S3 key for asset version "47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88"
+  AssetParameters47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88ArtifactHashB18ED843:
+    Type: String
+    Description: Artifact hash for asset "47e5fcf28db4f8f3c538a664c3d2f5d5e00e7f95a2ff118970698a7523a9df88"
+

@@ -1,0 +1,16 @@
+*.js
+!frontend/**/*.js
+!functions/*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+cdk.context.json
+
+.envrc
+
+frontend/build/
+.DS_Store

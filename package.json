@@ -1,0 +1,45 @@
+{
+  "name": "infinidrive",
+  "version": "0.1.0",
+  "bin": {
+    "infinidrive": "bin/infinidrive.js"
+  },
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "synth": "npm run build && npx cdk synth",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "deploy": "npm run build && npx cdk deploy"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.114.0",
+    "@aws-cdk/aws-apigatewayv2": "1.114.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "1.114.0",
+    "@aws-cdk/aws-certificatemanager": "1.114.0",
+    "@aws-cdk/aws-cloudfront": "1.114.0",
+    "@aws-cdk/aws-cloudfront-origins": "1.114.0",
+    "@aws-cdk/aws-dynamodb": "^1.114.0",
+    "@aws-cdk/aws-iam": "^1.114.0",
+    "@aws-cdk/aws-lambda": "1.114.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.114.0",
+    "@aws-cdk/aws-route53": "1.114.0",
+    "@aws-cdk/aws-s3": "1.114.0",
+    "@aws-cdk/aws-s3-deployment": "1.114.0",
+    "@aws-sdk/util-dynamodb": "^3.22.0",
+    "@aws/dynamodb-data-marshaller": "^0.7.3",
+    "@types/jest": "^26.0.10",
+    "@types/lodash": "^4.14.171",
+    "@types/node": "10.17.27",
+    "aws-cdk": "1.114.0",
+    "jest": "^26.4.2",
+    "lodash": "^4.17.21",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "@aws-cdk/core": "1.114.0",
+    "source-map-support": "^0.5.16"
+  }
+}

@@ -1,0 +1,37 @@
+name: Deploy to AWS
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCOUNT: ${{secrets.AWS_ACCOUNT}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Clean install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build react app
+        working-directory: ./frontend
+        run: npm run build
+
+      - name: Clean install CDK and dependencies
+        run: npm ci
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
+          role-duration-seconds: 1200
+
+      - name: CDK deploy
+        run: npx cdk deploy --require-approval never

@@ -1,0 +1,705 @@
+[
+  {
+    "id": "0",
+    "name": "Apollo 13",
+    "image": "../images/36.JPG",
+    "description": "Apollo 13 was the seventh crewed mission in the Apollo space program and the third meant to land on the Moon. The lunar landing was aborted after an oxygen tank in the service module (SM) failed two days into the mission. The crew instead looped around the Moon and returned safely to Earth.",
+    "price": 4100,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 10,
+      "price": 10,
+      "real": 10,
+      "smartness": 2,
+      "daredevil": 9
+    }
+  },
+  {
+    "id": "1",
+    "name": "Ent",
+    "image": "../images/2.JPG",
+    "description": "A medically equipped vehicle which transports patients to treatment facilities, such as hospitals. Typically, out-of-hospital medical care is provided to the patient.",
+    "price": 2600,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 1,
+      "speed": 5,
+      "price": 3,
+      "real": 10,
+      "smartness": 0,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "2",
+    "name": "Portals",
+    "image": "../images/38.JPG",
+    "description": "The portals are doorways in time, employed in various fiction genres, especially science fiction and fantasy, to transport characters to the past or future. Momentum, a function of mass and velocity, is conserved between portals. In layman's terms: speedy thing goes in, speedy thing comes out.",
+    "price": 5200,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 10,
+      "price": 7,
+      "real": 8,
+      "smartness": 7,
+      "daredevil": 6
+    }
+  },
+  {
+    "id": "3",
+    "name": "Nimbus 2000",
+    "image": "../images/37.JPG",
+    "description": "The Nimbus 2000 was a broomstick produced by the Nimbus Racing Broom Company as part of their successful line of racing brooms. At the time of its release in 1991, it was the fastest broomstick in production. The Nimbus 2000 easily outperformed its competitors on the Quidditch pitch until it was replaced as the top broomstick by the Nimbus 2001",
+    "price": 300,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 3,
+      "price": 3,
+      "real": 0,
+      "smartness": 6,
+      "daredevil": 3
+    }
+  },
+  {
+    "id": "4",
+    "name": "Unicorn",
+    "image": "../images/5.JPG",
+    "description": "Mythological animal resembling a horse or a goat with a single horn on its forehead. Those who drank from its horn were thought to be protected from stomach trouble, epilepsy, and poison.",
+    "price": 6000,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 0,
+      "speed": 2,
+      "price": 2,
+      "real": 1,
+      "smartness": 6,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "5",
+    "name": "Canoe",
+    "image": "../images/6.JPG",
+    "description": "A lightweight narrow water vessel, typically pointed at both ends and open on top, propelled by one or more seated or kneeling paddlers facing the direction of travel and using a single-bladed paddle.",
+    "price": 700,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 3,
+      "price": 3,
+      "real": 10,
+      "smartness": 2,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "6",
+    "name": "Magic Carpet",
+    "image": "../images/7.JPG",
+    "description": "A magic carpet, also called a flying carpet, is a legendary carpet and common trope in fantasy fiction. It is typically used as a form of transportation and can quickly or instantaneously carry its users to their destination.",
+    "price": 1600,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 0,
+      "speed": 2,
+      "price": 4,
+      "real": 3,
+      "smartness": 7,
+      "daredevil": 4
+    }
+  },
+  {
+    "id": "7",
+    "name": "Hoverboard",
+    "image": "../images/8.JPG",
+    "description": "A recreational vehicle similar to a skateboard in size and shape. Sometimes called a self-balancing scooter, a true hoverboard does not actually hover or float.",
+    "price": 800,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 4,
+      "price": 5,
+      "real": 10,
+      "smartness": 2,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "8",
+    "name": "The Black Pearl",
+    "image": "../images/35.JPG",
+    "description": "The Black Pearl is easily recognized by her distinctive black hull and sails. She is said to be nigh uncatchable. Indeed, in her many adventures she either overtakes or escapes all other ships, including the Interceptor and the Flying Dutchman. Her speed is partly derived from the large amount of sails she carries, and partly supernatural.",
+    "price": 3200,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 6,
+      "price": 6,
+      "real": 8,
+      "smartness": 3,
+      "daredevil": 8
+    }
+  },
+  {
+    "id": "9",
+    "name": "Sport Car",
+    "image": "../images/10.JPG",
+    "description": "A car designed with an emphasis on dynamic performance, such as handling, acceleration, top speed, or thrill of driving.",
+    "price": 2600,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 7,
+      "price": 5,
+      "real": 10,
+      "smartness": 2,
+      "daredevil": 7
+    }
+  },
+  {
+    "id": "10",
+    "name": "Hot Air Balloon",
+    "image": "../images/11.JPG",
+    "description": "A lighter-than-air aircraft consisting of a bag, called an envelope, which contains heated air. Suspended beneath is a gondola or wicker basket (in some long-distance or high-altitude balloons, a capsule), which carries passengers and a source of heat, in most cases an open flame caused by burning liquid propane.",
+    "price": 1800,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 1,
+      "price": 3,
+      "real": 10,
+      "smartness": 2,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "11",
+    "name": "Dinosaur",
+    "image": "../images/12.JPG",
+    "description": "A diverse group of reptiles of the clade Dinosauria. They first appeared during the Triassic period, between 243 and 233.23 million years ago, although the exact origin and timing of the evolution of dinosaurs is the subject of active research.",
+    "price": 3800,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 10,
+      "speed": 2,
+      "price": 2,
+      "real": 5,
+      "smartness": 8,
+      "daredevil": 7
+    }
+  },
+  {
+    "id": "12",
+    "name": "Nautilus",
+    "image": "../images/13.JPG",
+    "description": "Nautilus is described as a masterpiece containing masterpieces. It is designed and commanded by Captain Nemo. Electricity provided by sodium/mercury batteries (with the sodium provided by extraction from seawater) is the craft's primary power source for propulsion and other services. The energy needed to extract the sodium is provided by coal mined from the sea floor.",
+    "price": 5300,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 7,
+      "price": 6,
+      "real": 9,
+      "smartness": 3,
+      "daredevil": 7
+    }
+  },
+  {
+    "id": "13",
+    "name": "Giant Stilts",
+    "image": "../images/15.JPG",
+    "description": "Stilts are poles, posts or pillars that allow a person or structure to stand at a height above the ground. In flood plains, and on beaches or unstable ground, buildings are often constructed on stilts to protect them from damage by water, waves or shifting soil or sand.",
+    "price": 500,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 1,
+      "price": 1,
+      "real": 10,
+      "smartness": 0,
+      "daredevil": 1
+    }
+  },
+  {
+    "id": "14",
+    "name": "Tank",
+    "image": "../images/16.JPG",
+    "description": "Any heavily armed and armoured combat vehicle that moves on two endless metal chains called tracks. Tanks are essentially weapons platforms that make the weapons mounted in them more effective by their cross-country mobility and by the protection they provide for their crews.",
+    "price": 3100,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 5,
+      "price": 6,
+      "real": 10,
+      "smartness": 6,
+      "daredevil": 7
+    }
+  },
+  {
+    "id": "15",
+    "name": "Motorboat",
+    "image": "../images/17.JPG",
+    "description": "A powerboat, also referred to as a motorboat or speedboat, is a boat which is powered by an engine. Some motorboats are fitted with inboard engines, others have an outboard motor installed on the rear, containing the internal combustion engine, the gearbox and the propeller in one portable unit.",
+    "price": 1200,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 3,
+      "price": 7,
+      "real": 10,
+      "smartness": 0,
+      "daredevil": 3
+    }
+  },
+  {
+    "id": "16",
+    "name": "Standard Mecha",
+    "image": "../images/18.JPG",
+    "description": "These machines vary greatly in size and shape, but are distinguished from vehicles by their humanoid or biomorphic appearance and size—bigger than a human. Different subgenres exist, with varying connotations of realism.",
+    "price": 2800,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 5,
+      "price": 8,
+      "real": 7,
+      "smartness": 9,
+      "daredevil": 9
+    }
+  },
+  {
+    "id": "17",
+    "name": "Horse Sleigh",
+    "image": "../images/19.JPG",
+    "description": "A sleigh is a large sled that's pulled by horses, or in the case of Santa Claus, by reindeer. A sleigh is usually big enough for at least two passengers to ride in. Most sleighs travel across snow or ice, sliding on smooth runners, and are pulled by one or more horses.",
+    "price": 800,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 1,
+      "price": 3,
+      "real": 9,
+      "smartness": 0,
+      "daredevil": 1
+    }
+  },
+  {
+    "id": "18",
+    "name": "Brigantine",
+    "image": "../images/20.JPG",
+    "description": "A two-masted sailing vessel with a fully square-rigged foremast and at least two sails on the main mast: a square topsail and a gaff sail mainsail (behind the mast).",
+    "price": 2700,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 3,
+      "price": 5,
+      "real": 9,
+      "smartness": 2,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "19",
+    "name": "Vintage Penny Farthing Bicycle",
+    "image": "../images/21.JPG",
+    "description": "a direct-drive bicycle, meaning the cranks and pedals are fixed directly to the hub. Instead of using gears to multiply the revolutions of the pedals, the driven wheel is enlarged to be close to the rider's inseam, to increase the maximum speed.",
+    "price": 100,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 3,
+      "price": 2,
+      "real": 9,
+      "smartness": 2,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "20",
+    "name": "Pogo Stick",
+    "image": "../images/22.JPG",
+    "description": "A device for jumping off the ground in a standing position, through the aid of a spring, or new high performance technologies, often used as a toy, exercise equipment or extreme sports instrument. It led to an extreme sport named extreme pogo or Xpogo",
+    "price": 10,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 1,
+      "price": 0,
+      "real": 9,
+      "smartness": 1,
+      "daredevil": 0
+    }
+  },
+  {
+    "id": "21",
+    "name": "Falkor",
+    "image": "../images/23.JPG",
+    "description": "Falkor is very wise, incredibly optimistic, dignified and a very friendly sophisticated being from Fantasia. He gives advice to people when they have lost hope in many things they set out to do whether in a quest for what they seek or in some cases people and beings have given up altogether and lost faith.",
+    "price": 3800,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 0,
+      "speed": 5,
+      "price": 4,
+      "real": 2,
+      "smartness": 8,
+      "daredevil": 4
+    }
+  },
+  {
+    "id": "22",
+    "name": "A molecular transporter",
+    "image": "../images/24.JPG",
+    "description": "A molecular transporter was a form of transporter technology possessed by the Kalandans capable of transporting objects as large as a starship to a distance of 990.7 light years.",
+    "price": 4900,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 8,
+      "price": 9,
+      "real": 3,
+      "smartness": 8,
+      "daredevil": 5
+    }
+  },
+  {
+    "id": "23",
+    "name": "Normandy SR-2",
+    "image": "../images/25.JPG",
+    "description": "A starship that serves as Commander Shepard's base of operations following the destruction of the SSV Normandy.",
+    "price": 44000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 10,
+      "speed": 10,
+      "price": 10,
+      "real": 3,
+      "smartness": 7,
+      "daredevil": 9
+    }
+  },
+  {
+    "id": "24",
+    "name": "Moya",
+    "image": "../images/26.JPG",
+    "description": "A female Leviathan transport vessel; a living sentient bio-mechanical space ship, who was once captured by the Peacekeepers. She escaped captivity along with the people imprisoned on her by the Peacekeepers. She has given birth to one offspring, a male by the name of Talyn.",
+    "price": 49000,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 9,
+      "speed": 9,
+      "price": 8,
+      "real": 2,
+      "smartness": 6,
+      "daredevil": 8
+    }
+  },
+  {
+    "id": "25",
+    "name": "Light Cycle",
+    "image": "../images/28.JPG",
+    "description": "Light Cycles are vehicles resembling motorcycles that are driven by programs in the Game Grid. Upon being rezzed in by a program's rod, a light cycle completely covers the driver - who is forced into a riding position - with a protective canopy. Each Light Cycle is colored according to the color of the rod that generated it.",
+    "price": 4000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 6,
+      "price": 7,
+      "real": 2,
+      "smartness": 5,
+      "daredevil": 4
+    }
+  },
+  {
+    "id": "26",
+    "name": "Batmobile",
+    "image": "../images/29.JPG",
+    "description": "The car driven by Batman and housed in the Batcave which it accesses through a hidden entrance, the Batmobile is both a heavily armored tactical assault vehicle and a personalized custom-built pursuit and capture vehicle that is used by Batman in his fight against crime.",
+    "price": 5000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 6,
+      "price": 7,
+      "real": 4,
+      "smartness": 6,
+      "daredevil": 6
+    }
+  },
+  {
+    "id": "27",
+    "name": "Chocobo",
+    "image": "../images/30.JPG",
+    "description": "A breed of flightless birds, characterized by their yellow feathers, distinct odor, and the unforgettable chirp, kweh! Domesticated for their gentle nature and quick feet, they are often used as a mode of ground transportation.",
+    "price": 50,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 0,
+      "speed": 3,
+      "price": 3,
+      "real": 2,
+      "smartness": 7,
+      "daredevil": 1
+    }
+  },
+  {
+    "id": "28",
+    "name": "Mario Kart",
+    "image": "../images/31.JPG",
+    "description": "They can come in various sizes and colours with their own distinct stats such as speed, acceleration and handling. Watch out for those blue shells!",
+    "price": 800,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 6,
+      "price": 5,
+      "real": 2,
+      "smartness": 8,
+      "daredevil": 3
+    }
+  },
+  {
+    "id": "29",
+    "name": "Catbus",
+    "image": "../images/32.JPG",
+    "description": "Catbus is a large creature, depicted as a grinning, twelve legged cat with a hollow body that serves as a bus, complete with windows and seats coated with fur, and a large, bushy tail.",
+    "price": 1000,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 0,
+      "speed": 5,
+      "price": 2,
+      "real": 0,
+      "smartness": 10,
+      "daredevil": 2
+    }
+  },
+  {
+    "id": "30",
+    "name": "Hippogriff",
+    "image": "../images/33.JPG",
+    "description": "A Hippogriff is a magical beast that has the front legs, wings, and head of a giant eagle and the body, hind legs and tail of a horse. It is very similar to another magical creature, the Griffin, with the horse rear replacing the lion rear. Buckbeak was one such hippogriff.",
+    "price": 2000,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 0,
+      "speed": 5,
+      "price": 3,
+      "real": 0,
+      "smartness": 8,
+      "daredevil": 3
+    }
+  },
+  {
+    "id": "31",
+    "name": "Treebeard",
+    "image": "../images/34.JPG",
+    "description": "Ents, also known as Onodrim (Tree-host) by the Elves, were a very old race of Middle-earth. They were apparently created at the behest of Yavanna after she learned of Aulë's children, the dwarves, knowing that they would want to fell trees. Becoming shepherds of the trees, they protected certain forests from orcs and other perils. The Elves had tales of teaching the trees and the Ents to talk: although the Ents were sentient beings at the time, they did not know how to speak until the Elves taught them. Treebeard spoke of the Elves curing the Ents of their dumbness, an unforgettable gift.",
+    "price": 10000,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 10,
+      "speed": 0,
+      "price": 2,
+      "real": 0,
+      "smartness": 7,
+      "daredevil": 1
+    }
+  },
+  {
+    "id": "32",
+    "name": "Aston Martin DB5",
+    "image": "../images/39.JPG",
+    "description": "The Aston Martin DB5 is a British luxury grand tourer made by Aston Martin and designed by the Italian coachbuilder Carrozzeria Touring Superleggera.Released in 1963, the DB5 is the best-known cinematic James Bond car, first appearing in Goldfinger.",
+    "price": 20000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 6,
+      "price": 5,
+      "real": 10,
+      "smartness": 0,
+      "daredevil": 4
+    }
+  },
+  {
+    "id": "33",
+    "name": "DeLorean Time Machine",
+    "image": "../images/40.JPG",
+    "description": "The DeLorean time machine is a time travel device made by retrofitting a DMC DeLorean vehicle with a flux capacitor. The car requires 1.21 gigawatts of power and needs to travel 88 miles per hour (142 km/h) to initiate time travel.",
+    "price": 10000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 3,
+      "price": 4,
+      "real": 8,
+      "smartness": 6,
+      "daredevil": 5
+    }
+  },
+  {
+    "id": "34",
+    "name": "The Hogwarts Express",
+    "image": "../images/41.JPG",
+    "description": "The Hogwarts Express is the name of the train that ran between London King's Cross Station Platform 9¾ and Hogsmeade station. It made this run about six times a year, maybe more, as needed. The Express dutifully carried students to and from Hogwarts School of Witchcraft and Wizardry at the start and end of every term.",
+    "price": 1000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 10,
+      "wheels": 10,
+      "sentient": 0,
+      "destroy": 0,
+      "speed": 5,
+      "price": 4,
+      "real": 4,
+      "smartness": 7,
+      "daredevil": 1
+    }
+  },
+  {
+    "id": "35",
+    "name": "Toothless",
+    "image": "../images/42.JPG",
+    "description": "Once thought of as the unholy offspring of lightning and death itself, Toothless (20 in dragon years) has proven to be much more of a giant, winged pussycat than the stuff of nightmares. Playful, inquisitive, and intelligent",
+    "price": 1000,
+    "tags": {
+      "feed": 10,
+      "ecofriendly": 10,
+      "wheels": 0,
+      "sentient": 10,
+      "destroy": 10,
+      "speed": 6,
+      "price": 5,
+      "real": 0,
+      "smartness": 9,
+      "daredevil": 3
+    }
+  },
+  {
+    "id": "36",
+    "name": "Millennium Falcon",
+    "image": "../images/43.JPG",
+    "description": "The Millennium Falcon, originally designated YT 492727ZED and formerly known as the Stellar Envoy, was a Corellian YT-1300f light freighter most famously used by the smugglers Han Solo and Chewbacca, during and following the Galactic Civil War.",
+    "price": 50000,
+    "tags": {
+      "feed": 0,
+      "ecofriendly": 0,
+      "wheels": 0,
+      "sentient": 0,
+      "destroy": 10,
+      "speed": 8,
+      "price": 6,
+      "real": 3,
+      "smartness": 7,
+      "daredevil": 7
+    }
+  }
+]

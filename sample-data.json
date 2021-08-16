@@ -1,0 +1,53 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "text": "Would you mind feeding your vehicle?",
+      "type": "BOOLEAN",
+      "category": "real",
+      "options": [
+        { "label": "yes", "value": 10 },
+        { "label": "no", "value": 0 }
+      ]
+    },
+    {
+      "id": "6",
+      "text": "How would you measure your need for speed?",
+      "type": "RANGE",
+      "category": "speed",
+      "options": {
+        "min": 0,
+        "max": 10,
+        "step": 1
+      }
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "1",
+      "name": "Spaceship",
+      "image": "../images/1.JPG",
+      "description": "A spacecraft is a vehicle or machine designed to fly in outer space. A type of artificial satellite, spacecraft are used for a variety of purposes, including communications, Earth observation, meteorology, navigation, space colonization, planetary exploration, and transportation of humans and cargo.",
+      "price": 30,
+      "tags": {
+        "speed": 10,
+        "real": 0
+      }
+    },
+    {
+      "id": "2",
+      "name": "Spaceship",
+      "image": "../images/1.JPG",
+      "description": "A spacecraft is a vehicle or machine designed to fly in outer space. A type of artificial satellite, spacecraft are used for a variety of purposes, including communications, Earth observation, meteorology, navigation, space colonization, planetary exploration, and transportation of humans and cargo.",
+      "price": 30,
+      "tags": {
+        "speed": 0,
+        "real": 10
+      }
+    }
+  ],
+  "state": {
+    "answers": [{ "value": 10 }, { "value": 6}]
+  }
+}
+

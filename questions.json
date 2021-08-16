@@ -1,0 +1,137 @@
+[
+  {
+    "id": "1",
+    "text": "Welcome Tripper. Beyond here lies your destiny. Tell me, are you a kind and nurturing soul who wants to see those around them grow?",
+    "type": "BOOLEAN",
+    "category": "feed",
+    "answer": [
+      {
+        "label": true,
+        "value": 25
+      },
+      {
+        "label": false,
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "text": "Interesting. If it benefits you, would you use a resource until it is depleted? Even if depleting that resource may hurt others later on?",
+    "type": "BOOLEAN",
+    "category": "ecofriendly",
+    "answer": [
+      {
+        "label": true,
+        "value": 25
+      },
+      {
+        "label": false,
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "text": "I see. Do you prefer the open road to the mountain trail?",
+    "type": "BOOLEAN",
+    "category": "wheels",
+    "answer": [
+      {
+        "label": true,
+        "value": 25
+      },
+      {
+        "label": false,
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "text": "Does the willfulness of others cause you discomfort or irritation?",
+    "type": "BOOLEAN",
+    "category": "sentient",
+    "answer": [
+      {
+        "label": true,
+        "value": 25
+      },
+      {
+        "label": false,
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "text": "Do you think that sometimes the best way to solve a problem is raze everything to the ground and start again?",
+    "type": "BOOLEAN",
+    "category": "destroy",
+    "answer": [
+      {
+        "label": true,
+        "value": 25
+      },
+      {
+        "label": false,
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "text": "Are you eagre to embrace new challenges and experiences? How much do you like being at the front of the pack?",
+    "type": "RANGE",
+    "category": "speed",
+    "answer": {
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  },
+  {
+    "id": "7",
+    "text": "How much of your life have you spent fumbling in a greasy till?",
+    "type": "RANGE",
+    "category": "price",
+    "answer": {
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  },
+  {
+    "id": "8",
+    "text": "Hmm...we're getting closer. Answer me this - how much comfort do you find in tangible and familiar things?",
+    "type": "RANGE",
+    "category": "real",
+    "answer": {
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  },
+  {
+    "id": "9",
+    "text": "Do humour and whimsey speak to your soul Tripper? How much joy does a little silliness bring?",
+    "type": "RANGE",
+    "category": "smartness",
+    "answer": {
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  },
+  {
+    "id": "10",
+    "text": "I think I have the measure of you now Tripper. Last question: are you willing to take a chance, but potentially lose it all?",
+    "type": "RANGE",
+    "category": "daredevil",
+    "answer": {
+      "min": 0,
+      "max": 10,
+      "step": 1
+    }
+  }
+]
